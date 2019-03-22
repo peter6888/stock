@@ -1,23 +1,12 @@
-# rl_project
-Reinforcement Learning Project
-
-On GPU machine installation follow http://web.stanford.edu/class/cs234/assignment2/CS234%20Azure%20Setup.pdf
-On CPU machine uncomment GPU related lines.
-pip install tensorflow
-cd ~/git/rl_project
-pip install -r requirements.txt
+# Reinforcement Learning Project
 
 ## API Key Setup
 Mac -- (~/.bash_profile)
 Ubuntu -- (~/git/.env/bin/activate)
 
+## Environment Variable Settings
 AlphaVantageKey=[You API key applied from AlphaVantage]
-
 STOCK_HOME=[Home Directory For Stock]
-```
-cp gym/stock_env/zxstock/Data_Daily_Stock_Dow_Jones_30/dow_jones_30_ticker.txt $STOCK_HOME
-python prepare.py #update to latest stock data
-```
 
 ## pip istall dependence
 ```buildoutcfg
@@ -51,8 +40,10 @@ python
     import prepare_data as prd
     prd.get_data_from_av()
 ```
+## GPU setup on Ubuntu
+On GPU machine installation follow http://web.stanford.edu/class/cs234/assignment2/CS234%20Azure%20Setup.pdf
 
-Test for 100 times
+## Test for 100 times
 ```Test for 100 times
 cd baselines
 bash test_100.sh

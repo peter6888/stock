@@ -1,8 +1,10 @@
 # Reinforcement Learning Project
 
 ## API Key Setup
-Mac -- (~/.bash_profile)
-Ubuntu -- (~/git/.env/bin/activate)
+Mac
+```~/.bash_profile)```
+Ubuntu 
+```~/git/.env/bin/activate```
 
 ## Environment Variable Settings
 AlphaVantageKey=[You API key applied from AlphaVantage]

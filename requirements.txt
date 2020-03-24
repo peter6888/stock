@@ -3,7 +3,7 @@ astor==0.7.1
 atomicwrites==1.3.0
 attrs==18.2.0
 -e git+https://github.com/openai/baselines.git@5b41c926c7a852df3f0928afdf2429f96a3965cb#egg=baselines
-bleach==1.5.0
+bleach==3.1.2
 certifi==2018.11.29
 chardet==3.0.4
 Click==7.0

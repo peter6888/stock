@@ -4,10 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of HTML Files</title>
+    <title>Most useful ETF historical returns https://peter6888.github.io/stock/</title>
+    <script>
+        function addFavorite() {
+            var url = window.location.href;
+            var title = document.title;
+
+            if (window.sidebar && window.sidebar.addPanel) { // Firefox < 23
+                window.sidebar.addPanel(title, url, "");
+            } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorites
+                window.external.AddFavorite(url, title);
+            } else if (window.opera && window.print) { // Opera
+                this.title = title;
+                return true;
+            } else { // For other browsers (e.g., Chrome, Firefox > 23)
+                alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') !== -1 ? 'Cmd' : 'Ctrl') + ' + D to bookmark this page.');
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Index of HTML Files</h1>
+    <h1>ETF(s)</h1>
+    https://peter6888.github.io/stock/ <br> <br>
+    <button onclick="addFavorite()">Add to Favorites</button>
     <ul>
     <li><a href="spy.html">spy.html</a></li>
 <li><a href="qqq.html">qqq.html</a></li>

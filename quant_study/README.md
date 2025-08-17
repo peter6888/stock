@@ -10,9 +10,11 @@ This directory contains a clean, refactored quantitative strategy backtesting fr
 - **`__init__.py`** - Package initialization with convenient imports
 
 ### Strategy Comparison Scripts
+- **`3compare.py`** - Three strategy comparison (Static 1x, Eric's Strategy w/ Gold, QQQ Buy & Hold)
 - **`4compare.py`** - Four strategy comparison (9Sig, Static 1.4x, Eric's Strategy, QQQ Buy & Hold)
 - **`9sig_vs_qld433.py`** - 9Sig vs Static 1.4x comparison
-- **`eric_vs_qqq.py`** - Eric's strategy vs QQQ comparison
+- **`eric_vs_qqq.py`** - Eric's strategy (w/ Bitcoin) vs QQQ comparison
+- **`eric_gld_vs_qqq.py`** - Eric's strategy (w/ Gold) vs QQQ comparison
 
 ### Utilities & Documentation
 - **`prepare_data.py`** - Data preparation utilities (legacy)
@@ -20,19 +22,48 @@ This directory contains a clean, refactored quantitative strategy backtesting fr
 
 ## 📊 Backtest Snapshots
 
-The `backtest_snapshot/` directory stores visualization results from strategy comparisons. Charts are saved with descriptive names including the current month for easy tracking:
+The `backtest_snapshot/` directory stores visualization results from strategy comparisons. Charts are saved with descriptive names including the current month for easy tracking.
 
-**Naming Convention (August 2025):**
-- `4compare_aug2025.png` - Four strategy comparison chart
-- `9sig_vs_qld433_aug2025.png` - 9Sig vs Static 1.4x comparison
-- `eric_vs_qqq_aug2025.png` - Eric's strategy vs QQQ comparison
+### **Available Snapshots (August 2025):**
 
-**To Generate Snapshots:**
+#### **`3compare_aug2025.png`** (104.9 KB)
+Three strategy comparison showing Static 1x vs Eric's Strategy (w/ Gold) vs QQQ Buy & Hold from 2011-2025. Key findings:
+- **Eric's Strategy (w/ Gold)**: $112,848 final value, 18.5% CAGR, best Sharpe ratio (0.97)
+- **QQQ Buy & Hold**: $110,256 final value, 19.2% CAGR, lowest drawdown (-35.1%)
+- **Static 1x**: $101,470 final value, 18.4% CAGR
+
+#### **`4compare_aug2025.png`** (123.0 KB)
+Four strategy comparison from 2015-2025 showing the power of Bitcoin exposure:
+- **Eric's Strategy (w/ Bitcoin)**: $503,281 final value, 46.6% CAGR (winner)
+- **9Sig Strategy**: $252,220 final value, 38.1% CAGR
+- **Static 1.4x**: $78,185 final value, 22.8% CAGR
+- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR (baseline)
+
+#### **`9sig_vs_qld433_aug2025.png`** (73.1 KB)
+Direct comparison of 9Sig vs Static 1.4x strategies from 2015-2025:
+- **9Sig (TQQQ + BIL)**: $252,220 final value, 38.1% CAGR, higher volatility
+- **Static 1.4x (QQQ + QLD + BIL)**: $78,185 final value, 22.8% CAGR, more stable
+
+#### **`eric_vs_qqq_aug2025.png`** (76.4 KB)
+Eric's diversified strategy with Bitcoin vs QQQ Buy & Hold from 2015-2025:
+- **Eric's Strategy**: $503,281 final value, 46.6% CAGR (+813% outperformance)
+- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR
+- Demonstrates the massive impact of Bitcoin allocation during this period
+
+#### **`eric_gld_vs_qqq_aug2025.png`** (104.2 KB)
+Eric's strategy with Gold instead of Bitcoin vs QQQ Buy & Hold from 2015-2025:
+- **Eric's Strategy (w/ Gold)**: $50,593 final value, 16.5% CAGR (-8.2% underperformance)
+- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR
+- Shows how asset selection (Gold vs Bitcoin) dramatically affects outcomes
+
+### **To Generate New Snapshots:**
 ```bash
 cd quant_study
+python 3compare.py          # Generates 3-strategy comparison chart
 python 4compare.py          # Generates 4-strategy comparison chart
 python 9sig_vs_qld433.py    # Generates 9Sig vs Static 1.4x chart  
-python eric_vs_qqq.py       # Generates Eric's vs QQQ chart
+python eric_vs_qqq.py       # Generates Eric's (w/ Bitcoin) vs QQQ chart
+python eric_gld_vs_qqq.py   # Generates Eric's (w/ Gold) vs QQQ chart
 ```
 
 ## 🚀 Key Improvements

@@ -32,18 +32,18 @@ This framework compares different investment strategies through comprehensive ba
 
 ### **Available Snapshots:**
 
-#### **`3compare_aug2025.png`** - Conservative Strategy Comparison (2011-2025)
-**Winner: Eric's Strategy with Gold** 🥇
+#### **`3compare_aug2025.png`** - Three Strategy Comparison (2012-2025)
+**Winner: Static 1x Strategy** 🏆
 
 ![3 Strategy Comparison](backtest_snapshot/3compare_aug2025.png)
 
-- **Eric's Strategy (w/ Gold)**: $112,848 final value, 18.5% CAGR, excellent Sharpe ratio (0.97)
-- **QQQ Buy & Hold**: $110,256 final value, 19.2% CAGR, lowest risk (-35.1% max drawdown)
-- **Static 1x**: $101,470 final value, 18.4% CAGR
+- **Static 1x (QQQ + QLD + BIL)**: $149,828 final value, 23.2% CAGR, 23.3% volatility
+- **Eric's Strategy (w/ Gold)**: $95,106 final value, 18.1% CAGR, 17.4% volatility
+- **QQQ Buy & Hold**: $96,205 final value, 19.0% CAGR, 20.9% volatility
 
-**Key Insight**: Gold provides steady diversification benefits over long periods.
+**Key Insight**: The Static 1x strategy delivered superior returns with controlled volatility, thanks to its optimized leverage and quarterly rebalancing.
 
-#### **`4compare_aug2025.png`** - Ultimate Strategy Showdown (2015-2025)
+#### **`4compare_aug2025.png`** - Four Strategy Comparison (2015-2025)
 **Winner: Eric's Strategy with Bitcoin** 🚀
 
 ![4 Strategy Comparison](backtest_snapshot/4compare_aug2025.png)

@@ -1,6 +1,6 @@
 """
-Refactored Four Strategy Comparison using shared modules.
-Compares: 9Sig, Static 1.4x, Eric's Strategy, and QQQ Buy & Hold
+Four Strategy Comparison: 9Sig, Static 1.4x, Eric's Strategy, and QQQ Buy & Hold
+Comprehensive backtest comparison with performance metrics and visualization.
 """
 
 from backtest_utils import (

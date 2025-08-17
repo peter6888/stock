@@ -1,6 +1,6 @@
 """
-Refactored Eric's Strategy vs QQQ comparison using shared modules.
-Shows how the new architecture dramatically reduces code duplication.
+Eric's Strategy vs QQQ Buy & Hold Comparison
+Comprehensive backtest comparison with performance metrics and visualization.
 """
 
 from backtest_utils import (

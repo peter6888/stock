@@ -1,6 +1,6 @@
 """
 Three Strategy Comparison: Static 1x, Eric's Strategy (w/ Gold), and QQQ Buy & Hold
-Refactored to use shared utilities and libraries.
+Comprehensive backtest comparison with performance metrics and visualization.
 Eric's strategy: BTC replaced with GLD (Gold)
 """
 

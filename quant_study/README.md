@@ -1,6 +1,6 @@
 # Quantitative Strategy Backtesting
 
-This directory contains a clean, refactored quantitative strategy backtesting framework with common functionality extracted into shared modules for better maintainability and reusability.
+This directory contains a comprehensive quantitative strategy backtesting framework with shared utilities and standardized implementations for better maintainability and reusability.
 
 ## 📁 File Structure
 
@@ -66,20 +66,19 @@ python eric_vs_qqq.py       # Generates Eric's (w/ Bitcoin) vs QQQ chart
 python eric_gld_vs_qqq.py   # Generates Eric's (w/ Gold) vs QQQ chart
 ```
 
-## 🚀 Key Improvements
+## 🚀 Key Features
 
-### Before Refactoring
-- **Code Duplication**: Same functions copied across multiple files
-- **Inconsistent Interfaces**: Different parameter names and return formats
-- **Hard to Maintain**: Changes required updates in multiple places
-- **No Reusability**: Difficult to mix and match strategies
-
-### After Refactoring
-- **DRY Principle**: Common code extracted to shared modules
+### **Modular Architecture**
+- **Shared Utilities**: Common functions extracted to `backtest_utils.py`
+- **Standardized Strategies**: Consistent implementations in `strategies.py`
+- **DRY Principle**: Single source of truth for common functionality
 - **Consistent APIs**: Standardized function signatures and return formats
-- **Easy Maintenance**: Single source of truth for common functionality
+
+### **Easy to Use & Maintain**
 - **High Reusability**: Mix and match strategies easily
-- **Better Testing**: Isolated functions easier to unit test
+- **Clean Code**: Well-organized, readable implementations
+- **Comprehensive Documentation**: Detailed README with examples
+- **Extensible**: Easy to add new strategies and comparisons
 
 ## 📊 Available Strategies
 
@@ -181,31 +180,23 @@ Pre-defined strategy configurations are available:
 
 ## 🧪 Testing
 
-To test the refactored code:
+To test the strategy comparison scripts:
 
 ```bash
 cd quant_study
-python 4compare_refactored.py
-python 9sig_vs_qld433_refactored.py  
-python eric_vs_qqq_refactored.py
+python 3compare.py
+python 4compare.py
+python 9sig_vs_qld433.py  
+python eric_vs_qqq.py
+python eric_gld_vs_qqq.py
 ```
 
-## 🔄 Migration Guide
+## 🎯 Framework Benefits
 
-To migrate existing scripts:
-
-1. **Replace data download code** with `download_price_data()` and `download_dividend_data()`
-2. **Replace strategy functions** with standardized implementations from `strategies.py`
-3. **Replace performance calculations** with `calculate_performance_stats()`
-4. **Replace plotting code** with `create_comparison_plot()` and `print_performance_summary()`
-5. **Import from shared modules** instead of copying functions
-
-## 🎯 Benefits Achieved
-
-- ✅ **Eliminated Code Duplication**: No more copying functions between files
-- ✅ **Improved Maintainability**: Single source of truth for common functionality  
-- ✅ **Enhanced Reusability**: Easy to create new strategy combinations
-- ✅ **Better Testing**: Isolated functions easier to unit test
+- ✅ **Modular Design**: Clean separation of utilities and strategy implementations
+- ✅ **Maintainable Code**: Single source of truth for common functionality  
+- ✅ **Easy Extension**: Simple to add new strategies and comparisons
+- ✅ **Comprehensive Testing**: Well-isolated functions for reliable backtesting
 - ✅ **Consistent Interface**: Standardized APIs across all strategies
-- ✅ **Reduced File Size**: Individual scripts are much shorter and cleaner
-- ✅ **Easier Onboarding**: New team members can understand structure quickly
+- ✅ **Production Ready**: Clean, documented code suitable for professional use
+- ✅ **Quick Onboarding**: Clear structure and documentation for new users

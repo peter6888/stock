@@ -1,6 +1,6 @@
 """
-Refactored 9Sig vs Static 1.4x comparison using shared modules.
-Demonstrates the power of the refactored codebase with minimal code.
+9Sig vs Static 1.4x Strategy Comparison
+Comprehensive backtest comparison with performance metrics and visualization.
 """
 
 from backtest_utils import (

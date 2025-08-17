@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantitative Strategy Backtesting - Stock Analysis</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #7f8c8d;
+        }
+        .strategy-card {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .performance-card {
+            background: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .winner {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 15px 0;
+        }
+        code {
+            background: #f1f2f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        pre {
+            background: #2f3640;
+            color: #f5f6fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .nav-link {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px 10px 0;
+            transition: background 0.3s;
+        }
+        .nav-link:hover {
+            background: #2980b9;
+        }
+        .emoji {
+            font-size: 1.2em;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-item {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-link">← Back to Main</a>
+        
+        <h1><span class="emoji">📈</span> Quantitative Strategy Backtesting</h1>
+        
+        <p>This framework compares different investment strategies through comprehensive backtesting analysis. Each strategy is tested with real market data to provide actionable insights for investors.</p>
+
+        <h2><span class="emoji">🎯</span> Investment Strategies Explained</h2>
+
+        <div class="strategy-card">
+            <h3><strong>9Sig Strategy</strong></h3>
+            <ul>
+                <li><strong>Concept</strong>: Dynamic leverage strategy using TQQQ (3x leveraged NASDAQ) + BIL (Treasury Bills)</li>
+                <li><strong>Mechanism</strong>: Quarterly rebalancing targeting 9% growth per quarter</li>
+                <li><strong>Risk Profile</strong>: High volatility, high potential returns</li>
+                <li><strong>Best For</strong>: Aggressive growth investors comfortable with significant drawdowns</li>
+            </ul>
+        </div>
+
+        <div class="strategy-card">
+            <h3><strong>Eric's Strategy</strong></h3>
+            <ul>
+                <li><strong>Concept</strong>: Diversified portfolio with annual rebalancing</li>
+                <li><strong>Allocation</strong>: 20% BIL (cash), 30% QQQ (tech), 40% SCHD (dividends), 10% QLD (2x leverage), 10% BTC/GLD (alternative asset)</li>
+                <li><strong>Risk Profile</strong>: Moderate to high, depends on alternative asset choice</li>
+                <li><strong>Best For</strong>: Investors seeking diversification with growth potential</li>
+            </ul>
+        </div>
+
+        <div class="strategy-card">
+            <h3><strong>Static 1.4x Strategy</strong></h3>
+            <ul>
+                <li><strong>Concept</strong>: Fixed leverage strategy using QQQ + QLD + BIL</li>
+                <li><strong>Mechanism</strong>: Maintains consistent 1.4x leverage through quarterly rebalancing</li>
+                <li><strong>Risk Profile</strong>: Moderate volatility with steady leverage</li>
+                <li><strong>Best For</strong>: Investors wanting controlled leverage exposure</li>
+            </ul>
+        </div>
+
+        <div class="strategy-card">
+            <h3><strong>QQQ Buy & Hold</strong></h3>
+            <ul>
+                <li><strong>Concept</strong>: Simple buy and hold of NASDAQ-100 ETF</li>
+                <li><strong>Mechanism</strong>: No rebalancing, just dividend reinvestment</li>
+                <li><strong>Risk Profile</strong>: Market-level volatility</li>
+                <li><strong>Best For</strong>: Long-term passive investors, baseline comparison</li>
+            </ul>
+        </div>
+
+        <h2><span class="emoji">📊</span> Performance Results (August 2025)</h2>
+
+        <h3>Conservative Strategy Comparison (2011-2025)</h3>
+        <div class="winner">🥇 Winner: Eric's Strategy with Gold</div>
+        <img src="backtest_snapshot/3compare_aug2025.png" alt="3 Strategy Comparison">
+        
+        <div class="performance-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">$112,848</div>
+                    <div>Eric's Strategy (Gold)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">18.5%</div>
+                    <div>CAGR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">0.97</div>
+                    <div>Sharpe Ratio</div>
+                </div>
+            </div>
+            <p><strong>Key Insight</strong>: Gold provides steady diversification benefits over long periods.</p>
+        </div>
+
+        <h3>Ultimate Strategy Showdown (2015-2025)</h3>
+        <div class="winner">🚀 Winner: Eric's Strategy with Bitcoin</div>
+        <img src="backtest_snapshot/4compare_aug2025.png" alt="4 Strategy Comparison">
+        
+        <div class="performance-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">$503,281</div>
+                    <div>Eric's Strategy (Bitcoin)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">46.6%</div>
+                    <div>CAGR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">+813%</div>
+                    <div>vs QQQ</div>
+                </div>
+            </div>
+            <p><strong>Key Insight</strong>: Bitcoin exposure during 2015-2025 was a game-changer for portfolio performance.</p>
+        </div>
+
+        <h3>Leverage Strategy Battle (2015-2025)</h3>
+        <div class="winner">⚡ Winner: 9Sig Strategy</div>
+        <img src="backtest_snapshot/9sig_vs_qld433_aug2025.png" alt="9Sig vs Static 1.4x">
+        
+        <div class="performance-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">$252,220</div>
+                    <div>9Sig Strategy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">38.1%</div>
+                    <div>CAGR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$78,185</div>
+                    <div>Static 1.4x</div>
+                </div>
+            </div>
+            <p><strong>Key Insight</strong>: Dynamic leverage adjustment (9Sig) significantly outperformed static leverage during this bull market period.</p>
+        </div>
+
+        <h3>Diversification vs Simplicity (2015-2025)</h3>
+        <div class="winner">💎 Winner: Eric's Strategy</div>
+        <img src="backtest_snapshot/eric_vs_qqq_aug2025.png" alt="Eric's Strategy vs QQQ">
+        
+        <div class="performance-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">$503,281</div>
+                    <div>Eric's Strategy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">46.6%</div>
+                    <div>CAGR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$55,124</div>
+                    <div>QQQ Buy & Hold</div>
+                </div>
+            </div>
+            <p><strong>Key Insight</strong>: Strategic diversification with alternative assets can dramatically enhance returns, but requires active management.</p>
+        </div>
+
+        <h3>Gold vs Tech Stocks (2015-2025)</h3>
+        <div class="winner">📈 Winner: QQQ Buy & Hold</div>
+        <img src="backtest_snapshot/eric_gld_vs_qqq_aug2025.png" alt="Eric's Strategy with Gold vs QQQ">
+        
+        <div class="performance-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">$55,124</div>
+                    <div>QQQ Buy & Hold</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">18.6%</div>
+                    <div>CAGR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$50,593</div>
+                    <div>Eric's Strategy (Gold)</div>
+                </div>
+            </div>
+            <p><strong>Key Insight</strong>: During tech boom periods, simple QQQ often beats complex strategies with conservative assets like Gold.</p>
+        </div>
+
+        <h2><span class="emoji">🚀</span> Quick Start</h2>
+        
+        <p><strong>Run any comparison to see the results:</strong></p>
+        <pre><code>cd quant_study
+
+# Conservative strategies (2011-2025)
+python 3compare.py
+
+# All strategies showdown (2015-2025) 
+python 4compare.py
+
+# Leverage strategies head-to-head
+python 9sig_vs_qld433.py
+
+# Diversification vs simplicity
+python eric_vs_qqq.py
+
+# Gold vs tech stocks
+python eric_gld_vs_qqq.py</code></pre>
+
+        <p>Each script generates a detailed chart saved in <code>backtest_snapshot/</code> and prints performance statistics to the console.</p>
+
+        <h2><span class="emoji">🛠</span> Developer Documentation</h2>
+
+        <h3>Core Modules</h3>
+        <ul>
+            <li><strong><code>backtest_utils.py</code></strong> - Common utilities for data download, performance calculation, and visualization</li>
+            <li><strong><code>strategies.py</code></strong> - Standardized strategy implementations</li>
+            <li><strong><code>__init__.py</code></strong> - Package initialization with convenient imports</li>
+        </ul>
+
+        <h3>Available Strategy Functions</h3>
+        <div class="strategy-card">
+            <h4><code>backtest_9sig_strategy()</code></h4>
+            <ul>
+                <li><strong>Description</strong>: TQQQ + BIL with quarterly 9% growth target</li>
+                <li><strong>Parameters</strong>: <code>tqqq_weight=0.60</code>, <code>quarterly_growth=1.09</code></li>
+                <li><strong>Rebalancing</strong>: Quarterly</li>
+            </ul>
+        </div>
+
+        <div class="strategy-card">
+            <h4><code>backtest_eric_strategy()</code></h4>
+            <ul>
+                <li><strong>Description</strong>: Diversified strategy with annual rebalancing</li>
+                <li><strong>Default Allocation</strong>: 20% BIL, 30% QQQ, 40% SCHD, 10% QLD, 10% BTC/GLD</li>
+                <li><strong>Rebalancing</strong>: Annual</li>
+            </ul>
+        </div>
+
+        <div class="strategy-card">
+            <h4><code>backtest_static_leverage_strategy()</code></h4>
+            <ul>
+                <li><strong>Description</strong>: Static leverage with periodic rebalancing</li>
+                <li><strong>Parameters</strong>: Configurable tickers, weights, and frequency</li>
+                <li><strong>Rebalancing</strong>: Quarterly or Annual</li>
+            </ul>
+        </div>
+
+        <div class="strategy-card">
+            <h4><code>backtest_buy_and_hold()</code></h4>
+            <ul>
+                <li><strong>Description</strong>: Simple buy and hold with dividend reinvestment</li>
+                <li><strong>Parameters</strong>: Any single ticker</li>
+                <li><strong>Rebalancing</strong>: None (dividend reinvestment only)</li>
+            </ul>
+        </div>
+
+        <h3>Usage Example</h3>
+        <pre><code>from backtest_utils import download_price_data, calculate_performance_stats
+from strategies import backtest_9sig_strategy, backtest_buy_and_hold
+
+# Download data
+prices = download_price_data(["TQQQ", "BIL", "QQQ"], "2015-01-01", "2025-01-01")
+dividends = download_dividend_data(["TQQQ", "BIL", "QQQ"])
+
+# Run strategies
+val_9sig, _ = backtest_9sig_strategy(prices, dividends, 10000)
+val_qqq, _ = backtest_buy_and_hold(prices, dividends, "QQQ", 10000)
+
+# Calculate performance
+rf = prices["BIL"].pct_change()
+stats_9sig = calculate_performance_stats(val_9sig, rf, "9Sig")
+stats_qqq = calculate_performance_stats(val_qqq, rf, "QQQ")</code></pre>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="index.html" class="nav-link">← Back to Main</a>
+            <a href="https://github.com/peter6888/stock/tree/main/quant_study" class="nav-link" target="_blank">View Source Code</a>
+        </div>
+    </div>
+</body>
+</html>

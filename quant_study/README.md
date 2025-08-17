@@ -1,6 +1,102 @@
 # Quantitative Strategy Backtesting
 
-This directory contains a comprehensive quantitative strategy backtesting framework with shared utilities and standardized implementations for better maintainability and reusability.
+This framework compares different investment strategies through comprehensive backtesting analysis. Run any script to generate detailed performance comparisons with visualizations.
+
+## 🎯 Investment Strategies Explained
+
+### **9Sig Strategy**
+- **Concept**: Dynamic leverage strategy using TQQQ (3x leveraged NASDAQ) + BIL (Treasury Bills)
+- **Mechanism**: Quarterly rebalancing targeting 9% growth per quarter
+- **Risk Profile**: High volatility, high potential returns
+- **Best For**: Aggressive growth investors comfortable with significant drawdowns
+
+### **Eric's Strategy**
+- **Concept**: Diversified portfolio with annual rebalancing
+- **Allocation**: 20% BIL (cash), 30% QQQ (tech), 40% SCHD (dividends), 10% QLD (2x leverage), 10% BTC/GLD (alternative asset)
+- **Risk Profile**: Moderate to high, depends on alternative asset choice
+- **Best For**: Investors seeking diversification with growth potential
+
+### **Static 1.4x Strategy**
+- **Concept**: Fixed leverage strategy using QQQ + QLD + BIL
+- **Mechanism**: Maintains consistent 1.4x leverage through quarterly rebalancing
+- **Risk Profile**: Moderate volatility with steady leverage
+- **Best For**: Investors wanting controlled leverage exposure
+
+### **QQQ Buy & Hold**
+- **Concept**: Simple buy and hold of NASDAQ-100 ETF
+- **Mechanism**: No rebalancing, just dividend reinvestment
+- **Risk Profile**: Market-level volatility
+- **Best For**: Long-term passive investors, baseline comparison
+
+## 📈 Performance Results (August 2025)
+
+### **Available Snapshots:**
+
+#### **`3compare_aug2025.png`** - Conservative Strategy Comparison (2011-2025)
+**Winner: Eric's Strategy with Gold** 🥇
+- **Eric's Strategy (w/ Gold)**: $112,848 final value, 18.5% CAGR, excellent Sharpe ratio (0.97)
+- **QQQ Buy & Hold**: $110,256 final value, 19.2% CAGR, lowest risk (-35.1% max drawdown)
+- **Static 1x**: $101,470 final value, 18.4% CAGR
+
+**Key Insight**: Gold provides steady diversification benefits over long periods.
+
+#### **`4compare_aug2025.png`** - Ultimate Strategy Showdown (2015-2025)
+**Winner: Eric's Strategy with Bitcoin** 🚀
+- **Eric's Strategy (w/ Bitcoin)**: $503,281 final value, 46.6% CAGR (+813% vs QQQ!)
+- **9Sig Strategy**: $252,220 final value, 38.1% CAGR (dynamic leverage wins)
+- **Static 1.4x**: $78,185 final value, 22.8% CAGR (steady growth)
+- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR (baseline)
+
+**Key Insight**: Bitcoin exposure during 2015-2025 was a game-changer for portfolio performance.
+
+#### **`9sig_vs_qld433_aug2025.png`** - Leverage Strategy Battle (2015-2025)
+**Winner: 9Sig Strategy** ⚡
+- **9Sig (TQQQ + BIL)**: $252,220 final value, 38.1% CAGR (dynamic leverage)
+- **Static 1.4x (QQQ + QLD + BIL)**: $78,185 final value, 22.8% CAGR (fixed leverage)
+
+**Key Insight**: Dynamic leverage adjustment (9Sig) significantly outperformed static leverage during this bull market period.
+
+#### **`eric_vs_qqq_aug2025.png`** - Diversification vs Simplicity (2015-2025)
+**Winner: Eric's Strategy** 💎
+- **Eric's Strategy**: $503,281 final value, 46.6% CAGR (diversification + Bitcoin)
+- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR (simple & reliable)
+
+**Key Insight**: Strategic diversification with alternative assets can dramatically enhance returns, but requires active management.
+
+#### **`eric_gld_vs_qqq_aug2025.png`** - Gold vs Tech Stocks (2015-2025)
+**Winner: QQQ Buy & Hold** 📈
+- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR (tech dominance)
+- **Eric's Strategy (w/ Gold)**: $50,593 final value, 16.5% CAGR (conservative approach)
+
+**Key Insight**: During tech boom periods, simple QQQ often beats complex strategies with conservative assets like Gold.
+
+## 🚀 Quick Start
+
+**Run any comparison to see the results:**
+```bash
+cd quant_study
+
+# Conservative strategies (2011-2025)
+python 3compare.py
+
+# All strategies showdown (2015-2025) 
+python 4compare.py
+
+# Leverage strategies head-to-head
+python 9sig_vs_qld433.py
+
+# Diversification vs simplicity
+python eric_vs_qqq.py
+
+# Gold vs tech stocks
+python eric_gld_vs_qqq.py
+```
+
+Each script generates a detailed chart saved in `backtest_snapshot/` and prints performance statistics to the console.
+
+---
+
+# 🛠 Developer Documentation
 
 ## 📁 File Structure
 
@@ -20,67 +116,7 @@ This directory contains a comprehensive quantitative strategy backtesting framew
 - **`prepare_data.py`** - Data preparation utilities (legacy)
 - **`backtest_snapshot/`** - Directory for storing backtest result charts and snapshots
 
-## 📊 Backtest Snapshots
-
-The `backtest_snapshot/` directory stores visualization results from strategy comparisons. Charts are saved with descriptive names including the current month for easy tracking.
-
-### **Available Snapshots (August 2025):**
-
-#### **`3compare_aug2025.png`** (104.9 KB)
-Three strategy comparison showing Static 1x vs Eric's Strategy (w/ Gold) vs QQQ Buy & Hold from 2011-2025. Key findings:
-- **Eric's Strategy (w/ Gold)**: $112,848 final value, 18.5% CAGR, best Sharpe ratio (0.97)
-- **QQQ Buy & Hold**: $110,256 final value, 19.2% CAGR, lowest drawdown (-35.1%)
-- **Static 1x**: $101,470 final value, 18.4% CAGR
-
-#### **`4compare_aug2025.png`** (123.0 KB)
-Four strategy comparison from 2015-2025 showing the power of Bitcoin exposure:
-- **Eric's Strategy (w/ Bitcoin)**: $503,281 final value, 46.6% CAGR (winner)
-- **9Sig Strategy**: $252,220 final value, 38.1% CAGR
-- **Static 1.4x**: $78,185 final value, 22.8% CAGR
-- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR (baseline)
-
-#### **`9sig_vs_qld433_aug2025.png`** (73.1 KB)
-Direct comparison of 9Sig vs Static 1.4x strategies from 2015-2025:
-- **9Sig (TQQQ + BIL)**: $252,220 final value, 38.1% CAGR, higher volatility
-- **Static 1.4x (QQQ + QLD + BIL)**: $78,185 final value, 22.8% CAGR, more stable
-
-#### **`eric_vs_qqq_aug2025.png`** (76.4 KB)
-Eric's diversified strategy with Bitcoin vs QQQ Buy & Hold from 2015-2025:
-- **Eric's Strategy**: $503,281 final value, 46.6% CAGR (+813% outperformance)
-- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR
-- Demonstrates the massive impact of Bitcoin allocation during this period
-
-#### **`eric_gld_vs_qqq_aug2025.png`** (104.2 KB)
-Eric's strategy with Gold instead of Bitcoin vs QQQ Buy & Hold from 2015-2025:
-- **Eric's Strategy (w/ Gold)**: $50,593 final value, 16.5% CAGR (-8.2% underperformance)
-- **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR
-- Shows how asset selection (Gold vs Bitcoin) dramatically affects outcomes
-
-### **To Generate New Snapshots:**
-```bash
-cd quant_study
-python 3compare.py          # Generates 3-strategy comparison chart
-python 4compare.py          # Generates 4-strategy comparison chart
-python 9sig_vs_qld433.py    # Generates 9Sig vs Static 1.4x chart  
-python eric_vs_qqq.py       # Generates Eric's (w/ Bitcoin) vs QQQ chart
-python eric_gld_vs_qqq.py   # Generates Eric's (w/ Gold) vs QQQ chart
-```
-
-## 🚀 Key Features
-
-### **Modular Architecture**
-- **Shared Utilities**: Common functions extracted to `backtest_utils.py`
-- **Standardized Strategies**: Consistent implementations in `strategies.py`
-- **DRY Principle**: Single source of truth for common functionality
-- **Consistent APIs**: Standardized function signatures and return formats
-
-### **Easy to Use & Maintain**
-- **High Reusability**: Mix and match strategies easily
-- **Clean Code**: Well-organized, readable implementations
-- **Comprehensive Documentation**: Detailed README with examples
-- **Extensible**: Easy to add new strategies and comparisons
-
-## 📊 Available Strategies
+## 📊 Available Strategy Functions
 
 ### `backtest_9sig_strategy()`
 - **Description**: TQQQ + BIL with quarterly 9% growth target
@@ -168,35 +204,3 @@ Pre-defined strategy configurations are available:
 - `ERIC_STRATEGY_GOLD` - Eric's strategy with Gold instead of Bitcoin
 - `TICKERS_9SIG` - Tickers for 9Sig strategy
 - `TICKERS_STATIC_14X` - Tickers for Static 1.4x strategy
-
-## 📊 Code Reduction Statistics
-
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Lines of Code (total) | ~1,500 | ~800 | 47% reduction |
-| Duplicate Functions | 15+ | 0 | 100% elimination |
-| Files for 4-strategy comparison | 320 lines | 85 lines | 73% reduction |
-| Maintenance Effort | High | Low | Significant |
-
-## 🧪 Testing
-
-To test the strategy comparison scripts:
-
-```bash
-cd quant_study
-python 3compare.py
-python 4compare.py
-python 9sig_vs_qld433.py  
-python eric_vs_qqq.py
-python eric_gld_vs_qqq.py
-```
-
-## 🎯 Framework Benefits
-
-- ✅ **Modular Design**: Clean separation of utilities and strategy implementations
-- ✅ **Maintainable Code**: Single source of truth for common functionality  
-- ✅ **Easy Extension**: Simple to add new strategies and comparisons
-- ✅ **Comprehensive Testing**: Well-isolated functions for reliable backtesting
-- ✅ **Consistent Interface**: Standardized APIs across all strategies
-- ✅ **Production Ready**: Clean, documented code suitable for professional use
-- ✅ **Quick Onboarding**: Clear structure and documentation for new users

@@ -34,6 +34,9 @@ This framework compares different investment strategies through comprehensive ba
 
 #### **`3compare_aug2025.png`** - Conservative Strategy Comparison (2011-2025)
 **Winner: Eric's Strategy with Gold** 🥇
+
+![3 Strategy Comparison](backtest_snapshot/3compare_aug2025.png)
+
 - **Eric's Strategy (w/ Gold)**: $112,848 final value, 18.5% CAGR, excellent Sharpe ratio (0.97)
 - **QQQ Buy & Hold**: $110,256 final value, 19.2% CAGR, lowest risk (-35.1% max drawdown)
 - **Static 1x**: $101,470 final value, 18.4% CAGR
@@ -42,6 +45,9 @@ This framework compares different investment strategies through comprehensive ba
 
 #### **`4compare_aug2025.png`** - Ultimate Strategy Showdown (2015-2025)
 **Winner: Eric's Strategy with Bitcoin** 🚀
+
+![4 Strategy Comparison](backtest_snapshot/4compare_aug2025.png)
+
 - **Eric's Strategy (w/ Bitcoin)**: $503,281 final value, 46.6% CAGR (+813% vs QQQ!)
 - **9Sig Strategy**: $252,220 final value, 38.1% CAGR (dynamic leverage wins)
 - **Static 1.4x**: $78,185 final value, 22.8% CAGR (steady growth)
@@ -51,6 +57,9 @@ This framework compares different investment strategies through comprehensive ba
 
 #### **`9sig_vs_qld433_aug2025.png`** - Leverage Strategy Battle (2015-2025)
 **Winner: 9Sig Strategy** ⚡
+
+![9Sig vs Static 1.4x](backtest_snapshot/9sig_vs_qld433_aug2025.png)
+
 - **9Sig (TQQQ + BIL)**: $252,220 final value, 38.1% CAGR (dynamic leverage)
 - **Static 1.4x (QQQ + QLD + BIL)**: $78,185 final value, 22.8% CAGR (fixed leverage)
 
@@ -58,6 +67,9 @@ This framework compares different investment strategies through comprehensive ba
 
 #### **`eric_vs_qqq_aug2025.png`** - Diversification vs Simplicity (2015-2025)
 **Winner: Eric's Strategy** 💎
+
+![Eric's Strategy vs QQQ](backtest_snapshot/eric_vs_qqq_aug2025.png)
+
 - **Eric's Strategy**: $503,281 final value, 46.6% CAGR (diversification + Bitcoin)
 - **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR (simple & reliable)
 
@@ -65,6 +77,9 @@ This framework compares different investment strategies through comprehensive ba
 
 #### **`eric_gld_vs_qqq_aug2025.png`** - Gold vs Tech Stocks (2015-2025)
 **Winner: QQQ Buy & Hold** 📈
+
+![Eric's Strategy with Gold vs QQQ](backtest_snapshot/eric_gld_vs_qqq_aug2025.png)
+
 - **QQQ Buy & Hold**: $55,124 final value, 18.6% CAGR (tech dominance)
 - **Eric's Strategy (w/ Gold)**: $50,593 final value, 16.5% CAGR (conservative approach)
 

@@ -252,13 +252,13 @@ def rebalance_portfolio(df: pd.DataFrame, rebalance_date: pd.Timestamp,
     Rebalance portfolio to target weights on a specific date.
     
     Args:
-        df: DataFrame with price and units data
+        df: DataFrame with price and units data (must have 'Total' column)
         rebalance_date: Date to perform rebalancing
         tickers: List of ticker symbols
         target_weights: Array of target weights (must sum to 1)
     """
-    total_value = sum(df.loc[rebalance_date, f"{ticker}_units"] * df.loc[rebalance_date, ticker] 
-                     for ticker in tickers)
+    # Use pre-calculated Total column (matches reference implementation)
+    total_value = df.loc[rebalance_date, "Total"]
     target_values = total_value * target_weights
     
     for i, ticker in enumerate(tickers):
